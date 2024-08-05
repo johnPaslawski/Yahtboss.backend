@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace YahtBoss.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -18,8 +19,8 @@ namespace YahtBoss.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [HttpGet()]
+        public IEnumerable<WeatherForecast> GetWeather()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
@@ -28,6 +29,12 @@ namespace YahtBoss.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet(template:"GetString")]
+        public IActionResult GetString()
+        {
+            return Ok("Heloo byku");
         }
     }
 }

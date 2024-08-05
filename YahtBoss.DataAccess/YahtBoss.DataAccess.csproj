@@ -21,4 +21,8 @@
     <ProjectReference Include="..\YahtBoss.Domain\YahtBoss.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\Scripts\" />
+  </ItemGroup>
+
 </Project>
